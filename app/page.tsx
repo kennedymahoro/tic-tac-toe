@@ -8,9 +8,10 @@ export default function Home() {
   const O = "O";
   let currentplayer: string = "";
   let O_Array: number[] = [];
-  //let Create_play;
 
-  const Game:MouseEventHandler = (id: number, player:boolean) => {
+  const name_of_classes = "bg-white hover:bg-sky-300 w-28 h-28"
+
+  const Game:any = (id: number, player:boolean) => {
     if(player){
       currentplayer = X; 
       X_Array.push(id)
@@ -22,18 +23,19 @@ export default function Home() {
     Array_Squares.push([id,currentplayer])
   }
 
+
   return (
     <main className="w-screen h-screen flex justify-center items-center bg-white">
       <div className="grid grid-cols-3 w-fit h-fit gap-x-2 gap-y-2 bg-zinc-400 ">
-      <button key={1}  onClick={Game(1,Which_Player)} className="bg-white hover:bg-sky-300 w-20 h-20 ">{currentplayer}</button>
-      <button key={2}  onClick={Game(2,Which_Player)} className="bg-white hover:bg-sky-300 w-20 h-20 ">{currentplayer}</button>
-      <button key={3}  onClick={Game(3,Which_Player)} className="bg-white hover:bg-sky-300 w-20 h-20 ">{currentplayer}</button>
-      <button key={4}  onClick={Game(4,Which_Player)} className="bg-white hover:bg-sky-300 w-20 h-20 ">{currentplayer}</button>
-      <button key={5}  onClick={Game(5,Which_Player)} className="bg-white hover:bg-sky-300 w-20 h-20 ">{currentplayer}</button>
-      <button key={6}  onClick={Game(6,Which_Player)} className="bg-white hover:bg-sky-300 w-20 h-20 ">{currentplayer}</button>
-      <button key={7}  onClick={Game(7,Which_Player)} className="bg-white hover:bg-sky-300 w-20 h-20 ">{currentplayer}</button>
-      <button key={8}  onClick={Game(8,Which_Player)} className="bg-white hover:bg-sky-300 w-20 h-20 ">{currentplayer}</button>
-      <button key={9}  onClick={Game(9,Which_Player)} className="bg-white hover:bg-sky-300 w-20 h-20 ">{currentplayer}</button>
+      <button key={1}  onClick={Game(1,Which_Player)} className={name_of_classes}>{currentplayer}</button>
+      <button key={2}  onClick={Game(2,Which_Player)} className={name_of_classes}>{currentplayer}</button>
+      <button key={3}  onClick={Game(3,Which_Player)} className={name_of_classes}>{currentplayer}</button>
+      <button key={4}  onClick={Game(4,Which_Player)} className={name_of_classes}>{currentplayer}</button>
+      <button key={5}  onClick={Game(5,Which_Player)} className={name_of_classes}>{currentplayer}</button>
+      <button key={6}  onClick={Game(6,Which_Player)} className={name_of_classes}>{currentplayer}</button>
+      <button key={7}  onClick={Game(7,Which_Player)} className={name_of_classes}>{currentplayer}</button>
+      <button key={8}  onClick={Game(8,Which_Player)} className={name_of_classes}>{currentplayer}</button>
+      <button key={9}  onClick={Game(9,Which_Player)} className={name_of_classes}>{currentplayer}</button>
       </div>
     </main>
   )
