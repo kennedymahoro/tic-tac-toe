@@ -1,41 +1,49 @@
 "use client"
 import {useState} from "react";
+import Logo from "../public/squre-logo.png"
+import Image from "next/image"
 export default function Home() {
+  // both players
   let Array_Squares = [];
   let [Which_Player, set_which_player] = useState(true)
-  const X = "X";
+  // x player
+  const X_p = "X";
   let X_Array: number[] = [];
-  const O = "O";
-  let currentplayer: string = "";
+  // o player
+  const O_p = "O";
+  let currentplayer: string = X_p ? Which_Player == true : O_p ;
   let O_Array: number[] = [];
 
   const name_of_classes = "bg-white hover:bg-sky-300 w-28 h-28"
 
-  const Game:any = (id: number, player:boolean) => {
-    if(player){
-      currentplayer = X; 
-      X_Array.push(id)
-    }
-    else{
-      currentplayer = O;
-      O_Array.push(id)
-    } 
-    Array_Squares.push([id,currentplayer])
+  const Button = (props: {id:number
+                          Player: string}) => {
+    return (
+      <button type="button" key={props.id} onclick{() => {
+        if(props.Player == "X"){
+          X_Array.push(props.id)
+        }
+        else{
+          O_Array.push(props.id)
+        }
+        Array_Squares.push(props.id)
+        set_which_player(e => !e)
+      }} className={name_of_classes}>
+        {props.Player}
+      </button>
+    ) 
   }
 
 
+
   return (
-    <main className="w-screen h-screen flex justify-center items-center bg-white">
-      <div className="grid grid-cols-3 w-fit h-fit gap-x-2 gap-y-2 bg-zinc-400 ">
-      <button key={1}  onClick={Game(1,Which_Player)} className={name_of_classes}>{currentplayer}</button>
-      <button key={2}  onClick={Game(2,Which_Player)} className={name_of_classes}>{currentplayer}</button>
-      <button key={3}  onClick={Game(3,Which_Player)} className={name_of_classes}>{currentplayer}</button>
-      <button key={4}  onClick={Game(4,Which_Player)} className={name_of_classes}>{currentplayer}</button>
-      <button key={5}  onClick={Game(5,Which_Player)} className={name_of_classes}>{currentplayer}</button>
-      <button key={6}  onClick={Game(6,Which_Player)} className={name_of_classes}>{currentplayer}</button>
-      <button key={7}  onClick={Game(7,Which_Player)} className={name_of_classes}>{currentplayer}</button>
-      <button key={8}  onClick={Game(8,Which_Player)} className={name_of_classes}>{currentplayer}</button>
-      <button key={9}  onClick={Game(9,Which_Player)} className={name_of_classes}>{currentplayer}</button>
+    <main className="w-screen h-screen bg-white flex flex-col overflow-hidden">
+      <Image src={Logo} alt="Logo" className="my-2 absolute right-0 " height={100} width={100} /> 
+      <div className="grid place-content-center w-screen h-screen">
+        <div className="grid grid-cols-3 w-fit h-fit gap-x-2 gap-y-2 bg-zinc-400 ">
+          <Button id={1} Player={currentplayer} />
+          <button></button>
+        </div>
       </div>
     </main>
   )
