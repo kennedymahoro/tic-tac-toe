@@ -11,7 +11,7 @@ export default function Home() {
   let X_Array: number[] = [];
   // o player
   const O_p = "O";
-  let currentplayer: string = X_p ? Which_Player == true : O_p ;
+  let currentplayer: string = Which_Player == true ? X_p : O_p;
   let O_Array: number[] = [];
 
   const name_of_classes = "bg-white hover:bg-sky-300 w-28 h-28"
