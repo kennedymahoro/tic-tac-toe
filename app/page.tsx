@@ -16,12 +16,11 @@ export default function Home() {
 
   const name_of_classes = "bg-white hover:bg-sky-300 w-28 h-28"
 
-  const Button = (props: {id:number
-                          Player: string}) => {
+  const Button = (props: {id:number}):any => {
     return (
-      <button type="button" key={props.id} onclick{() => {
-        if(props.Player == "X"){
-          X_Array.push(props.id)
+      <button type="button" key={props.id} onClick{() => {
+        if(currentplayer == "X"){
+         X_Array.push(props.id)
         }
         else{
           O_Array.push(props.id)
@@ -29,7 +28,7 @@ export default function Home() {
         Array_Squares.push(props.id)
         set_which_player(e => !e)
       }} className={name_of_classes}>
-        {props.Player}
+        {currentplayer}
       </button>
     ) 
   }
@@ -41,7 +40,7 @@ export default function Home() {
       <Image src={Logo} alt="Logo" className="my-2 absolute right-0 " height={100} width={100} /> 
       <div className="grid place-content-center w-screen h-screen">
         <div className="grid grid-cols-3 w-fit h-fit gap-x-2 gap-y-2 bg-zinc-400 ">
-          <Button id={1} Player={currentplayer} />
+          <Button id={1} />
           <button></button>
         </div>
       </div>
